@@ -2,7 +2,7 @@
   TAILWIND OK
 </div>
 import React, { useState, useEffect, useRef } from 'react';
-import { Mic, Send, Menu, Sun, Wind, Sparkles, X, Keyboard, Trophy, User, RotateCcw, Check, UserCircle, Activity, Globe, Camera, Crown, Mail, Phone, CreditCard, MapPin } from 'lucide-react';
+import { Mic, Send, Menu, Sun, Wind, Sparkles, X, Keyboard, Trophy, User, RotateCcw, Check, UserCircle, Activity, Globe, Camera, Crown, Mail, Phone, CreditCard, MapPin, Flag, Ruler, Lock, Settings, TrendingUp } from 'lucide-react';
 
 const WatsonGolfAI = () => {
   // --- TRANSLATIONS & DATA ---
@@ -14,9 +14,62 @@ const WatsonGolfAI = () => {
     { code: 'ko', label: '한국어', flag: '🇰🇷' },
   ];
 
+  const COUNTRIES = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+    "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+    "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+    "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+    "Fiji", "Finland", "France",
+    "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+    "Haiti", "Honduras", "Hungary",
+    "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
+    "Jamaica", "Japan", "Jordan",
+    "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan",
+    "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+    "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
+    "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway",
+    "Oman",
+    "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+    "Qatar",
+    "Romania", "Russia", "Rwanda",
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+    "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+    "Vanuatu", "Vatican City", "Venezuela", "Vietnam",
+    "Yemen",
+    "Zambia", "Zimbabwe"
+  ];
+
+  const CLUBS = [
+    { name: "Driver", defaultDist: 230 },
+    { name: "3 Wood", defaultDist: 210 },
+    { name: "5 Wood", defaultDist: 200 },
+    { name: "Hybrid", defaultDist: 190 },
+    { name: "3 Iron", defaultDist: 180 },
+    { name: "4 Iron", defaultDist: 170 },
+    { name: "5 Iron", defaultDist: 160 },
+    { name: "6 Iron", defaultDist: 150 },
+    { name: "7 Iron", defaultDist: 140 },
+    { name: "8 Iron", defaultDist: 130 },
+    { name: "9 Iron", defaultDist: 120 },
+    { name: "PW", defaultDist: 110 },
+    { name: "GW", defaultDist: 100 },
+    { name: "SW", defaultDist: 90 },
+    { name: "LW", defaultDist: 80 }
+  ];
+
+  const TENDENCIES = [
+    { value: 'straight', labelKey: 'straight' },
+    { value: 'draw', labelKey: 'draw' },
+    { value: 'fade', labelKey: 'fade' },
+    { value: 'hook', labelKey: 'hook' },
+    { value: 'slice', labelKey: 'slice' }
+  ];
+
   const TRANSLATIONS = {
     en: {
-      greeting: "Hi! I'm Watson, your AI Caddie. \n\nOn the tee or in the rough, I've got your back. Ready to play?",
+      greeting: "Hi! I'm Watson, your 24/7 AI Caddie. \n\nRules, technique, training, mental game, fitness... I'm here to help with every aspect of your game. Ready?",
       online: "Online",
       tapToSpeak: "Tap to speak",
       listening: "Listening...",
@@ -27,6 +80,7 @@ const WatsonGolfAI = () => {
       identity: "Identity",
       firstName: "First Name",
       lastName: "Last Name",
+      country: "Country",
       email: "Email",
       phone: "Phone",
       subscription: "Subscription",
@@ -37,7 +91,17 @@ const WatsonGolfAI = () => {
       righty: "Righty",
       lefty: "Lefty",
       handicap: "My Handicap",
+      myBag: "My Bag & Distances",
+      club: "Club",
+      distance: "Dist.",
+      dispersion: "Disp.",
+      premiumFeature: "Premium Feature",
+      upgradeToUnlock: "Upgrade to unlock",
       language: "Language",
+      preferences: "Preferences",
+      units: "Units",
+      tendency: "Shot Tendency",
+      tendencies: { straight: "Straight", draw: "Draw", fade: "Fade", hook: "Hook", slice: "Slice" },
       reset: "Reset Conversation",
       vision_tip: "I see your ball is deep in the rough.\n\nTip: Grip the club tighter to avoid it twisting in the grass, and play the ball slightly back in your stance.",
       demo_query: "My ball is in the bunker but in water, what rules apply?",
@@ -49,7 +113,7 @@ const WatsonGolfAI = () => {
       ranges: ["Expert", "Advanced", "Intermediate", "Improving", "Beginner"]
     },
     fr: {
-      greeting: "Salut ! Je suis Watson, ton Caddie IA. \n\nSur le départ ou dans le rough, j'assure tes arrières. Prêt à jouer ?",
+      greeting: "Salut ! Je suis Watson, ton Caddie IA 24/7. \n\nArbitrage, technique, entraînement, mental, physique... Je suis là pour t'aider dans tous les domaines. On y va ?",
       online: "En ligne",
       tapToSpeak: "Appuyez pour parler",
       listening: "Je vous écoute...",
@@ -60,6 +124,7 @@ const WatsonGolfAI = () => {
       identity: "Identité",
       firstName: "Prénom",
       lastName: "Nom",
+      country: "Pays",
       email: "E-mail",
       phone: "Téléphone",
       subscription: "Abonnement",
@@ -70,7 +135,17 @@ const WatsonGolfAI = () => {
       righty: "Droitier",
       lefty: "Gaucher",
       handicap: "Mon Index",
+      myBag: "Mon Sac & Distances",
+      club: "Club",
+      distance: "Dist.",
+      dispersion: "Disp.",
+      premiumFeature: "Fonction Premium",
+      upgradeToUnlock: "Abonnez-vous pour débloquer",
       language: "Langue",
+      preferences: "Préférences",
+      units: "Unités",
+      tendency: "Tendance naturelle",
+      tendencies: { straight: "Droit", draw: "Draw", fade: "Fade", hook: "Hook", slice: "Slice" },
       reset: "Réinitialiser",
       vision_tip: "Je vois que ta balle est enfoncée dans le rough.\n\nConseil : Tiens ton club plus fermement pour éviter qu'il ne tourne dans l'herbe, et joue la balle légèrement en arrière dans ton stance.",
       demo_query: "Ma balle se trouve dans le bunker mais dans l'eau, quelles sont les règles qui s'appliquent ?",
@@ -82,7 +157,7 @@ const WatsonGolfAI = () => {
       ranges: ["Expert", "Confirmé", "Intermédiaire", "En progression", "Débutant"]
     },
     es: {
-      greeting: "¡Hola! Soy Watson, tu Caddie IA. \n\nEn el tee o en el rough, estoy contigo. ¿Listo para jugar?",
+      greeting: "¡Hola! Soy Watson, tu Caddie IA 24/7. \n\nReglas, técnica, entrenamiento, mental, físico... Estoy aquí para ayudarte en todos los aspectos de tu juego. ¿Listo?",
       online: "En línea",
       tapToSpeak: "Toca para hablar",
       listening: "Escuchando...",
@@ -93,6 +168,7 @@ const WatsonGolfAI = () => {
       identity: "Identidad",
       firstName: "Nombre",
       lastName: "Apellido",
+      country: "País",
       email: "Correo",
       phone: "Teléfono",
       subscription: "Suscripción",
@@ -104,6 +180,16 @@ const WatsonGolfAI = () => {
       lefty: "Zurdo",
       handicap: "Mi Hándicap",
       language: "Idioma",
+      preferences: "Preferencias",
+      units: "Unidades",
+      tendency: "Tendencia de golpe",
+      tendencies: { straight: "Recto", draw: "Draw", fade: "Fade", hook: "Hook", slice: "Slice" },
+      myBag: "Mi Bolsa y Distancias",
+      club: "Palo",
+      distance: "Dist.",
+      dispersion: "Disp.",
+      premiumFeature: "Función Premium",
+      upgradeToUnlock: "Suscríbete para desbloquear",
       reset: "Reiniciar",
       vision_tip: "Veo tu bola hundida en el rough.\n\nConsejo: Agarra el palo con más fuerza para evitar que gire en la hierba y juega la bola un poco más atrás.",
       demo_query: "Mi bola está en el bunker pero en el agua, ¿qué reglas se aplican?",
@@ -115,7 +201,7 @@ const WatsonGolfAI = () => {
       ranges: ["Experto", "Avanzado", "Intermedio", "Mejorando", "Principiante"]
     },
     ja: {
-      greeting: "こんにちは！AIキャディのワトソンです。\n\nティーグラウンドでもラフでも、私がサポートします。準備はいいですか？",
+      greeting: "こんにちは！24時間対応のAIキャディ、ワトソンです。\n\nルール、技術、練習、メンタル、フィジカル... ゴルフのあらゆる面でサポートします。準備はいいですか？",
       online: "オンライン",
       tapToSpeak: "タップして話す",
       listening: "聞いています...",
@@ -126,6 +212,7 @@ const WatsonGolfAI = () => {
       identity: "ID",
       firstName: "名",
       lastName: "姓",
+      country: "国",
       email: "メール",
       phone: "電話番号",
       subscription: "サブスクリプション",
@@ -137,6 +224,16 @@ const WatsonGolfAI = () => {
       lefty: "左打ち",
       handicap: "ハンディキャップ",
       language: "言語",
+      preferences: "設定",
+      units: "単位",
+      tendency: "持ち球",
+      tendencies: { straight: "ストレート", draw: "ドロー", fade: "フェード", hook: "フック", slice: "スライス" },
+      myBag: "クラブ距離",
+      club: "クラブ",
+      distance: "距離",
+      dispersion: "ばらつき",
+      premiumFeature: "プレミアム機能",
+      upgradeToUnlock: "アップグレードして解除",
       reset: "会話をリセット",
       vision_tip: "ボールがラフに沈んでいますね。\n\nヒント：芝に負けないようにグリップを強く握り、ボールを少し右足寄りに置いてください。",
       demo_query: "ボールがバンカー内の水の中にあります。どのようなルールが適用されますか？",
@@ -148,7 +245,7 @@ const WatsonGolfAI = () => {
       ranges: ["エキスパート", "上級者", "中級者", "初級者", "初心者"]
     },
     ko: {
-      greeting: "안녕하세요! AI 캐디 왓슨입니다. \n\n티박스나 러프 어디서든 도와드릴게요. 준비되셨나요?",
+      greeting: "안녕하세요! 24시간 대기 중인 AI 캐디 왓슨입니다. \n\n규칙, 기술, 훈련, 멘탈, 피지컬... 골프의 모든 면에서 도와드릴 수 있습니다. 준비되셨나요?",
       online: "온라인",
       tapToSpeak: "탭하여 말하기",
       listening: "듣고 있어요...",
@@ -159,6 +256,7 @@ const WatsonGolfAI = () => {
       identity: "신원",
       firstName: "이름",
       lastName: "성",
+      country: "국가",
       email: "이메일",
       phone: "전화번호",
       subscription: "구독",
@@ -170,6 +268,16 @@ const WatsonGolfAI = () => {
       lefty: "왼손잡이",
       handicap: "핸디캡",
       language: "언어",
+      preferences: "환경 설정",
+      units: "단위",
+      tendency: "구질",
+      tendencies: { straight: "스트레이트", draw: "드로우", fade: "페이드", hook: "훅", slice: "슬라이스" },
+      myBag: "내 클럽 비거리",
+      club: "클럽",
+      distance: "비거리",
+      dispersion: "분산",
+      premiumFeature: "프리미엄 기능",
+      upgradeToUnlock: "업그레이드하여 잠금 해제",
       reset: "대화 초기화",
       vision_tip: "공이 러프에 깊이 박혀 있네요.\n\n팁: 풀의 저항을 이겨내도록 그립을 단단히 잡고, 공을 평소보다 약간 오른발 쪽에 두세요.",
       demo_query: "공이 벙커 안 물에 있는데 어떤 규칙이 적용되나요?",
@@ -183,23 +291,28 @@ const WatsonGolfAI = () => {
   };
 
   const handicapRanges = [
-    { value: "0-10", descIndex: 0 },
-    { value: "11-20", descIndex: 1 },
-    { value: "21-30", descIndex: 2 },
-    { value: "31-40", descIndex: 3 },
-    { value: "41-54", descIndex: 4 }
+    { value: "0-10", descIndex: 0, dispersionRate: 0.05 },
+    { value: "11-20", descIndex: 1, dispersionRate: 0.10 },
+    { value: "21-30", descIndex: 2, dispersionRate: 0.15 },
+    { value: "31-40", descIndex: 3, dispersionRate: 0.20 },
+    { value: "41-54", descIndex: 4, dispersionRate: 0.20 }
   ];
 
   // --- STATES ---
   const [userProfile, setUserProfile] = useState({
-    firstName: 'Stéphane', // Configuré pour la démo
-    lastName: 'Nomis',      // Configuré pour la démo
+    firstName: 'Stéphane', 
+    lastName: 'Nomis',      
+    country: 'France',      
     email: '',
     phone: '',
-    handedness: 'right',    // Droitier
-    handicap: handicapRanges[1], // Index 16 est dans la tranche 11-20 (index 1 du tableau)
-    language: 'en',         // Parle anglais
-    plan: 'free'
+    handedness: 'right',    
+    handicap: handicapRanges[1], // Index 16 is in 11-20
+    language: 'en',         
+    plan: 'premium', 
+    tempUnit: 'C', // 'C' or 'F'
+    distUnit: 'm', // 'm' or 'yd'
+    tendency: 'straight', // 'straight', 'draw', 'fade', 'hook', 'slice'
+    distances: CLUBS.reduce((acc, club) => ({ ...acc, [club.name]: club.defaultDist }), {})
   });
 
   const [showSettings, setShowSettings] = useState(false);
@@ -247,6 +360,21 @@ const WatsonGolfAI = () => {
       }
       return newProfile;
     });
+  };
+
+  const updateDistance = (clubName, newDist) => {
+    setUserProfile(prev => ({
+      ...prev,
+      distances: {
+        ...prev.distances,
+        [clubName]: parseInt(newDist)
+      }
+    }));
+  };
+
+  const getDispersion = (distance) => {
+    const rate = userProfile.handicap.dispersionRate || 0.15;
+    return Math.round(distance * rate);
   };
 
   const scrollToBottom = () => {
@@ -423,6 +551,70 @@ const WatsonGolfAI = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto pb-8 space-y-8 no-scrollbar">
+              
+              {/* SECTION: IDENTITY */}
+              <section className="space-y-4">
+                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                  <UserCircle className="w-4 h-4" /> {t.identity}
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs text-slate-400 ml-1">{t.firstName}</label>
+                    <input 
+                      type="text" 
+                      value={userProfile.firstName}
+                      onChange={(e) => updateProfile('firstName', e.target.value)}
+                      placeholder="e.g. Tiger"
+                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs text-slate-400 ml-1">{t.lastName}</label>
+                    <input 
+                      type="text" 
+                      value={userProfile.lastName}
+                      onChange={(e) => updateProfile('lastName', e.target.value)}
+                      placeholder="e.g. Woods"
+                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
+                    />
+                  </div>
+                  {/* COUNTRY SELECTOR */}
+                  <div className="col-span-2 space-y-2">
+                    <label className="text-xs text-slate-400 ml-1 flex items-center gap-1"><Flag className="w-3 h-3" /> {t.country}</label>
+                    <select
+                      value={userProfile.country}
+                      onChange={(e) => updateProfile('country', e.target.value)}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors appearance-none"
+                    >
+                      {COUNTRIES.map((country) => (
+                        <option key={country} value={country}>{country}</option>
+                      ))}
+                    </select>
+                  </div>
+                  {/* EMAIL & PHONE */}
+                  <div className="col-span-2 space-y-2">
+                    <label className="text-xs text-slate-400 ml-1 flex items-center gap-1"><Mail className="w-3 h-3" /> {t.email}</label>
+                    <input 
+                      type="email" 
+                      value={userProfile.email}
+                      onChange={(e) => updateProfile('email', e.target.value)}
+                      placeholder="tiger@golf.com"
+                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
+                    />
+                  </div>
+                   <div className="col-span-2 space-y-2">
+                    <label className="text-xs text-slate-400 ml-1 flex items-center gap-1"><Phone className="w-3 h-3" /> {t.phone}</label>
+                    <input 
+                      type="tel" 
+                      value={userProfile.phone}
+                      onChange={(e) => updateProfile('phone', e.target.value)}
+                      placeholder="+1 555-0123"
+                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
+                    />
+                  </div>
+                </div>
+              </section>
+
               {/* SECTION: LANGUAGE */}
               <section className="space-y-4">
                 <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
@@ -444,6 +636,89 @@ const WatsonGolfAI = () => {
                       {userProfile.language === lang.code && <Check className="w-4 h-4 ml-auto" />}
                     </button>
                   ))}
+                </div>
+              </section>
+
+              {/* SECTION: PREFERENCES */}
+              <section className="space-y-4">
+                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                  <Settings className="w-4 h-4" /> {t.preferences}
+                </h3>
+                <div className="bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-4">
+                  {/* UNITS: TEMP */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-slate-300">{t.temp} ({t.units})</span>
+                    <div className="flex bg-slate-800 rounded-lg p-1">
+                      {['C', 'F'].map((unit) => (
+                        <button
+                          key={unit}
+                          onClick={() => updateProfile('tempUnit', unit)}
+                          className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
+                            userProfile.tempUnit === unit 
+                              ? 'bg-lime-400 text-slate-900 shadow' 
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          °{unit}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* UNITS: DIST */}
+                  <div className="flex items-center justify-between border-t border-slate-800 pt-4">
+                    <span className="text-sm font-medium text-slate-300">{t.dist} ({t.units})</span>
+                    <div className="flex bg-slate-800 rounded-lg p-1">
+                      {['m', 'yd'].map((unit) => (
+                        <button
+                          key={unit}
+                          onClick={() => updateProfile('distUnit', unit)}
+                          className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
+                            userProfile.distUnit === unit 
+                              ? 'bg-lime-400 text-slate-900 shadow' 
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          {unit}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION: HANDICAP */}
+              <section className="space-y-4">
+                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                  <Trophy className="w-4 h-4" /> {t.handicap}
+                </h3>
+                <div className="space-y-2">
+                  {handicapRanges.map((range, index) => {
+                    const isSelected = userProfile.handicap.value === range.value;
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => updateProfile('handicap', range)}
+                        className={`w-full p-4 rounded-2xl border transition-all flex items-center justify-between active:scale-95 ${
+                          isSelected 
+                            ? 'bg-lime-900/20 border-lime-500' 
+                            : 'bg-slate-900 border-slate-800 hover:bg-slate-800'
+                        }`}
+                      >
+                        <div className="flex flex-col items-start">
+                          <span className={`font-bold text-lg ${isSelected ? 'text-lime-400' : 'text-white'}`}>
+                            {range.value}
+                          </span>
+                          <span className="text-xs text-slate-500 font-medium uppercase tracking-wide">
+                            {t.ranges[range.descIndex]}
+                          </span>
+                        </div>
+                        {isSelected && <div className="w-6 h-6 rounded-full bg-lime-400 flex items-center justify-center">
+                          <Check className="w-4 h-4 text-slate-900" strokeWidth={3} />
+                        </div>}
+                      </button>
+                    );
+                  })}
                 </div>
               </section>
 
@@ -493,118 +768,164 @@ const WatsonGolfAI = () => {
                 </div>
               </section>
 
-              {/* SECTION: IDENTITY */}
+              {/* SECTION: DEXTERITY (Premium) */}
               <section className="space-y-4">
-                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
-                  <UserCircle className="w-4 h-4" /> {t.identity}
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-xs text-slate-400 ml-1">{t.firstName}</label>
-                    <input 
-                      type="text" 
-                      value={userProfile.firstName}
-                      onChange={(e) => updateProfile('firstName', e.target.value)}
-                      placeholder="e.g. Tiger"
-                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs text-slate-400 ml-1">{t.lastName}</label>
-                    <input 
-                      type="text" 
-                      value={userProfile.lastName}
-                      onChange={(e) => updateProfile('lastName', e.target.value)}
-                      placeholder="e.g. Woods"
-                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
-                    />
-                  </div>
-                  {/* NEW FIELDS */}
-                  <div className="col-span-2 space-y-2">
-                    <label className="text-xs text-slate-400 ml-1 flex items-center gap-1"><Mail className="w-3 h-3" /> {t.email}</label>
-                    <input 
-                      type="email" 
-                      value={userProfile.email}
-                      onChange={(e) => updateProfile('email', e.target.value)}
-                      placeholder="tiger@golf.com"
-                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
-                    />
-                  </div>
-                   <div className="col-span-2 space-y-2">
-                    <label className="text-xs text-slate-400 ml-1 flex items-center gap-1"><Phone className="w-3 h-3" /> {t.phone}</label>
-                    <input 
-                      type="tel" 
-                      value={userProfile.phone}
-                      onChange={(e) => updateProfile('phone', e.target.value)}
-                      placeholder="+1 555-0123"
-                      className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white focus:outline-none focus:border-lime-500 transition-colors"
-                    />
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION: HANDEDNESS */}
-              <section className="space-y-4">
-                 <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
-                  <Activity className="w-4 h-4" /> {t.dexterity}
-                </h3>
-                <div className="grid grid-cols-2 gap-4 p-1 bg-slate-900 rounded-2xl border border-slate-800">
-                  <button 
-                    onClick={() => updateProfile('handedness', 'right')}
-                    className={`p-3 rounded-xl font-medium transition-all duration-200 ${
-                      userProfile.handedness === 'right' 
-                        ? 'bg-lime-400 text-slate-900 shadow-lg' 
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    {t.righty}
-                  </button>
-                  <button 
-                    onClick={() => updateProfile('handedness', 'left')}
-                    className={`p-3 rounded-xl font-medium transition-all duration-200 ${
-                      userProfile.handedness === 'left' 
-                        ? 'bg-lime-400 text-slate-900 shadow-lg' 
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    {t.lefty}
-                  </button>
-                </div>
-              </section>
-
-              {/* SECTION: HANDICAP */}
-              <section className="space-y-4">
-                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
-                  <Trophy className="w-4 h-4" /> {t.handicap}
-                </h3>
-                <div className="space-y-2">
-                  {handicapRanges.map((range, index) => {
-                    const isSelected = userProfile.handicap.value === range.value;
-                    return (
-                      <button
-                        key={index}
-                        onClick={() => updateProfile('handicap', range)}
-                        className={`w-full p-4 rounded-2xl border transition-all flex items-center justify-between active:scale-95 ${
-                          isSelected 
-                            ? 'bg-lime-900/20 border-lime-500' 
-                            : 'bg-slate-900 border-slate-800 hover:bg-slate-800'
+                 <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <Activity className="w-4 h-4" /> {t.dexterity}
+                    </h3>
+                    {userProfile.plan !== 'premium' && (
+                        <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded font-bold uppercase tracking-wider flex items-center gap-1">
+                        <Lock className="w-3 h-3" /> {t.premiumFeature}
+                        </span>
+                    )}
+                 </div>
+                 
+                 {userProfile.plan === 'premium' ? (
+                    <div className="grid grid-cols-2 gap-4 p-1 bg-slate-900 rounded-2xl border border-slate-800">
+                        <button 
+                        onClick={() => updateProfile('handedness', 'right')}
+                        className={`p-3 rounded-xl font-medium transition-all duration-200 ${
+                            userProfile.handedness === 'right' 
+                            ? 'bg-lime-400 text-slate-900 shadow-lg' 
+                            : 'text-slate-400 hover:text-white'
                         }`}
-                      >
-                        <div className="flex flex-col items-start">
-                          <span className={`font-bold text-lg ${isSelected ? 'text-lime-400' : 'text-white'}`}>
-                            {range.value}
-                          </span>
-                          <span className="text-xs text-slate-500 font-medium uppercase tracking-wide">
-                            {t.ranges[range.descIndex]}
-                          </span>
+                        >
+                        {t.righty}
+                        </button>
+                        <button 
+                        onClick={() => updateProfile('handedness', 'left')}
+                        className={`p-3 rounded-xl font-medium transition-all duration-200 ${
+                            userProfile.handedness === 'left' 
+                            ? 'bg-lime-400 text-slate-900 shadow-lg' 
+                            : 'text-slate-400 hover:text-white'
+                        }`}
+                        >
+                        {t.lefty}
+                        </button>
+                    </div>
+                 ) : (
+                    <div className="bg-slate-900/50 rounded-2xl border border-slate-800 p-6 flex flex-col items-center justify-center text-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center">
+                        <Lock className="w-6 h-6 text-slate-500" />
                         </div>
-                        {isSelected && <div className="w-6 h-6 rounded-full bg-lime-400 flex items-center justify-center">
-                          <Check className="w-4 h-4 text-slate-900" strokeWidth={3} />
-                        </div>}
-                      </button>
-                    );
-                  })}
+                        <p className="text-slate-400 text-sm">{t.upgradeToUnlock}</p>
+                        <button 
+                        onClick={() => updateProfile('plan', 'premium')}
+                        className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-lg font-bold text-sm shadow-lg shadow-amber-500/20"
+                        >
+                        {t.planPremium}
+                        </button>
+                    </div>
+                 )}
+              </section>
+
+              {/* SECTION: SHOT TENDENCY (Premium) */}
+              <section className="space-y-4">
+                <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <TrendingUp className="w-4 h-4" /> {t.tendency}
+                    </h3>
+                    {userProfile.plan !== 'premium' && (
+                        <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded font-bold uppercase tracking-wider flex items-center gap-1">
+                        <Lock className="w-3 h-3" /> {t.premiumFeature}
+                        </span>
+                    )}
                 </div>
+
+                {userProfile.plan === 'premium' ? (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        {TENDENCIES.map((tendency) => (
+                            <button
+                            key={tendency.value}
+                            onClick={() => updateProfile('tendency', tendency.value)}
+                            className={`p-2 rounded-xl text-sm border transition-all ${
+                                userProfile.tendency === tendency.value 
+                                ? 'bg-lime-900/20 border-lime-500 text-lime-400' 
+                                : 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
+                            }`}
+                            >
+                            {t.tendencies[tendency.labelKey]}
+                            </button>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="bg-slate-900/50 rounded-2xl border border-slate-800 p-6 flex flex-col items-center justify-center text-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center">
+                        <Lock className="w-6 h-6 text-slate-500" />
+                        </div>
+                        <p className="text-slate-400 text-sm">{t.upgradeToUnlock}</p>
+                        <button 
+                        onClick={() => updateProfile('plan', 'premium')}
+                        className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-lg font-bold text-sm shadow-lg shadow-amber-500/20"
+                        >
+                        {t.planPremium}
+                        </button>
+                    </div>
+                )}
+              </section>
+
+              {/* SECTION: DISTANCES (Premium) */}
+              <section className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                    <Ruler className="w-4 h-4" /> {t.myBag}
+                  </h3>
+                  {userProfile.plan !== 'premium' && (
+                    <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Lock className="w-3 h-3" /> {t.premiumFeature}
+                    </span>
+                  )}
+                </div>
+
+                {userProfile.plan === 'premium' ? (
+                  <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden">
+                    <table className="w-full text-sm">
+                      <thead className="bg-slate-800 text-slate-400">
+                        <tr>
+                          <th className="p-3 text-left font-medium">{t.club}</th>
+                          <th className="p-3 text-center font-medium">{t.distance} ({userProfile.distUnit})</th>
+                          <th className="p-3 text-center font-medium">{t.dispersion} ({userProfile.distUnit})</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800">
+                        {CLUBS.map((club) => (
+                          <tr key={club.name} className="hover:bg-slate-800/50 transition-colors">
+                            <td className="p-3 font-medium text-white">{club.name}</td>
+                            <td className="p-3 text-center">
+                              <select 
+                                className="bg-slate-950 text-white border border-slate-700 rounded px-2 py-1 focus:border-lime-500 focus:outline-none"
+                                value={userProfile.distances[club.name]}
+                                onChange={(e) => updateDistance(club.name, e.target.value)}
+                              >
+                                {[...Array(61)].map((_, i) => {
+                                  const dist = i * 5;
+                                  return dist > 0 && <option key={dist} value={dist}>{dist}</option>;
+                                })}
+                              </select>
+                            </td>
+                            <td className="p-3 text-center text-slate-400">
+                              ±{getDispersion(userProfile.distances[club.name])}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="bg-slate-900/50 rounded-2xl border border-slate-800 p-6 flex flex-col items-center justify-center text-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center">
+                      <Lock className="w-6 h-6 text-slate-500" />
+                    </div>
+                    <p className="text-slate-400 text-sm">{t.upgradeToUnlock}</p>
+                    <button 
+                      onClick={() => updateProfile('plan', 'premium')}
+                      className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-lg font-bold text-sm shadow-lg shadow-amber-500/20"
+                    >
+                      {t.planPremium}
+                    </button>
+                  </div>
+                )}
               </section>
 
               <div className="pt-8 border-t border-slate-800">
@@ -624,7 +945,7 @@ const WatsonGolfAI = () => {
         <div className="px-6 pb-2 z-10 shrink-0">
           <div className="flex items-center gap-4 text-xs font-medium text-slate-400 bg-slate-900/50 p-2 rounded-xl border border-slate-800 w-fit">
             <div className="flex items-center gap-1"><MapPin className="w-3 h-3 text-red-400" /> Marrakech</div>
-            <div className="flex items-center gap-1"><Sun className="w-3 h-3 text-yellow-400" /> 72°F</div>
+            <div className="flex items-center gap-1"><Sun className="w-3 h-3 text-yellow-400" /> {userProfile.tempUnit === 'C' ? '22°C' : '72°F'}</div>
             <div className="flex items-center gap-1"><Wind className="w-3 h-3 text-blue-400" /> 10mph NW</div>
           </div>
         </div>
