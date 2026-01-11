@@ -69,7 +69,7 @@ const WatsonGolfAI = () => {
 
   const TRANSLATIONS = {
     en: {
-      greeting: "Hi! I'm Watson, your 24/7 AI Caddie. \n\nRules, technique, training, mental game, fitness... I'm here to help with every aspect of your game. Ready?",
+      greeting: "Hi! I'm Watson, your 24/7 AI Caddie. \n\nRules, technique, training, mental game, fitness, nutrition... I'm here to help with every aspect of your game. Ready?",
       online: "Online",
       tapToSpeak: "Tap to speak",
       listening: "Listening...",
@@ -108,12 +108,15 @@ const WatsonGolfAI = () => {
       chips: { 
         rules: "Unplayable lie?", 
         mental: "First tee nerves", 
-        tech: "Fix my slice" 
+        tech: "Fix my slice",
+        training: "Putting drill",
+        fitness: "Warm up",
+        nutrition: "Hydration tip"
       },
       ranges: ["Expert", "Advanced", "Intermediate", "Improving", "Beginner"]
     },
     fr: {
-      greeting: "Salut ! Je suis Watson, ton Caddie IA 24/7. \n\nArbitrage, technique, entraînement, mental, physique... Je suis là pour t'aider dans tous les domaines. On y va ?",
+      greeting: "Salut ! Je suis Watson, ton Caddie IA 24/7. \n\nArbitrage, technique, entraînement, mental, physique, nutrition... Je suis là pour t'aider dans tous les domaines. On y va ?",
       online: "En ligne",
       tapToSpeak: "Appuyez pour parler",
       listening: "Je vous écoute...",
@@ -152,12 +155,15 @@ const WatsonGolfAI = () => {
       chips: { 
         rules: "Balle injouable ?", 
         mental: "Gérer le stress", 
-        tech: "Corriger mon slice" 
+        tech: "Corriger mon slice",
+        training: "Exercice putting",
+        fitness: "Échauffement",
+        nutrition: "Snack énergie"
       },
       ranges: ["Expert", "Confirmé", "Intermédiaire", "En progression", "Débutant"]
     },
     es: {
-      greeting: "¡Hola! Soy Watson, tu Caddie IA 24/7. \n\nReglas, técnica, entrenamiento, mental, físico... Estoy aquí para ayudarte en todos los aspectos de tu juego. ¿Listo?",
+      greeting: "¡Hola! Soy Watson, tu Caddie IA 24/7. \n\nReglas, técnica, entrenamiento, mental, físico, nutrición... Estoy aquí para ayudarte en todos los aspectos de tu juego. ¿Listo?",
       online: "En línea",
       tapToSpeak: "Toca para hablar",
       listening: "Escuchando...",
@@ -196,12 +202,15 @@ const WatsonGolfAI = () => {
       chips: { 
         rules: "¿Bola injugable?", 
         mental: "Nervios tee 1", 
-        tech: "Corregir slice" 
+        tech: "Corregir slice",
+        training: "Ejercicio putt",
+        fitness: "Calentamiento",
+        nutrition: "Snack energía"
       },
       ranges: ["Experto", "Avanzado", "Intermedio", "Mejorando", "Principiante"]
     },
     ja: {
-      greeting: "こんにちは！24時間対応のAIキャディ、ワトソンです。\n\nルール、技術、練習、メンタル、フィジカル... ゴルフのあらゆる面でサポートします。準備はいいですか？",
+      greeting: "こんにちは！24時間対応のAIキャディ、ワトソンです。\n\nルール、技術、練習、メンタル、フィジカル、栄養... ゴルフのあらゆる面でサポートします。準備はいいですか？",
       online: "オンライン",
       tapToSpeak: "タップして話す",
       listening: "聞いています...",
@@ -240,12 +249,15 @@ const WatsonGolfAI = () => {
       chips: { 
         rules: "アンプレヤブル？", 
         mental: "朝イチの緊張", 
-        tech: "スライス修正" 
+        tech: "スライス修正",
+        training: "パット練習",
+        fitness: "ウォーミングアップ",
+        nutrition: "エネルギー補給"
       },
       ranges: ["エキスパート", "上級者", "中級者", "初級者", "初心者"]
     },
     ko: {
-      greeting: "안녕하세요! 24시간 대기 중인 AI 캐디 왓슨입니다. \n\n규칙, 기술, 훈련, 멘탈, 피지컬... 골프의 모든 면에서 도와드릴 수 있습니다. 준비되셨나요?",
+      greeting: "안녕하세요! 24시간 대기 중인 AI 캐디 왓슨입니다. \n\n규칙, 기술, 훈련, 멘탈, 피지컬, 영양... 골프의 모든 면에서 도와드릴 수 있습니다. 준비되셨나요?",
       online: "온라인",
       tapToSpeak: "탭하여 말하기",
       listening: "듣고 있어요...",
@@ -284,7 +296,10 @@ const WatsonGolfAI = () => {
       chips: { 
         rules: "언플레이어블?", 
         mental: "첫 티샷 긴장", 
-        tech: "슬라이스 교정" 
+        tech: "슬라이스 교정",
+        training: "퍼팅 연습",
+        fitness: "워밍업 루틴",
+        nutrition: "에너지 간식"
       },
       ranges: ["전문가", "상급자", "중급자", "향상 중", "초보자"]
     }
@@ -357,6 +372,11 @@ const WatsonGolfAI = () => {
             category: 'system'
           }]);
         }, 100);
+        
+        // Update greeting immediately when language changes
+        setMessages(current => current.map(msg => 
+          msg.type === 'greeting' ? { ...msg, text: TRANSLATIONS[value].greeting } : msg
+        ));
       }
       return newProfile;
     });
@@ -519,7 +539,8 @@ const WatsonGolfAI = () => {
                   {t.online}
                 </span>
                 <span className="text-slate-600">•</span>
-                <span className="text-lime-400/80 font-medium">
+                <span className="text-lime-400/80 font-medium flex items-center gap-1">
+                  <span>{LANGUAGES.find(l => l.code === userProfile.language)?.flag}</span>
                   {userProfile.firstName ? `${userProfile.firstName} • HCP ${userProfile.handicap.value}` : `HCP ${userProfile.handicap.value}`}
                 </span>
               </div>
@@ -1001,15 +1022,15 @@ const WatsonGolfAI = () => {
           {/* Suggestion Chips */}
           {!isListening && !showKeyboard && messages.length < 3 && (
             <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide mask-fade-right">
-              <button onClick={() => handleSendMessage(t.chips.rules)} className="whitespace-nowrap px-4 py-2 bg-slate-800 rounded-full text-sm font-medium border border-slate-700 hover:border-lime-500/50 transition-colors text-white">
-                {t.chips.rules}
-              </button>
-              <button onClick={() => handleSendMessage(t.chips.mental)} className="whitespace-nowrap px-4 py-2 bg-slate-800 rounded-full text-sm font-medium border border-slate-700 hover:border-lime-500/50 transition-colors text-white">
-                {t.chips.mental}
-              </button>
-               <button onClick={() => handleSendMessage(t.chips.tech)} className="whitespace-nowrap px-4 py-2 bg-slate-800 rounded-full text-sm font-medium border border-slate-700 hover:border-lime-500/50 transition-colors text-white">
-                {t.chips.tech}
-              </button>
+              {['rules', 'tech', 'mental', 'training', 'fitness', 'nutrition'].map(key => (
+                <button
+                  key={key}
+                  onClick={() => handleSendMessage(t.chips[key])}
+                  className="whitespace-nowrap px-4 py-2 bg-slate-800 rounded-full text-sm font-medium border border-slate-700 hover:border-lime-500/50 transition-colors text-white"
+                >
+                  {t.chips[key]}
+                </button>
+              ))}
             </div>
           )}
 
