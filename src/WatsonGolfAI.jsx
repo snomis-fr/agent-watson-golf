@@ -1,7 +1,7 @@
 <div className="fixed top-2 right-2 bg-red-600 text-white px-3 py-1 rounded">
   TAILWIND OK
 </div>
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Mic, Send, Menu, Sun, Wind, Sparkles, X, Keyboard, Trophy, User, RotateCcw, Check, UserCircle, Activity, Globe, Camera, Crown, Mail, Phone, CreditCard, MapPin, Flag, Ruler, Lock, Settings, TrendingUp, History, Info, ChevronRight, Calculator } from 'lucide-react';
 
 const WatsonGolfAI = () => {
@@ -106,12 +106,12 @@ const WatsonGolfAI = () => {
       vision_tip: "I see your ball is deep in the rough. Here is a pro tip:\n\n**Goal: Get it out clean. Period.**\n\n1. **Accept losing distance:** You're playing the exit, not the flag. Don't be greedy.\n2. **Open the face slightly:** The rough will close it at impact. Anticipate to avoid pulling left.\n3. **Firmer grip:** Stabilize the club against the grass. Firm, not tense.\n4. **Ball back in stance:** Half a ball back for a descending blow.\n5. **Short swing, controlled finish:** Hit to escape, not to impress. \n\n⚠️ Expect more roll, so play short of the flag.",
       demo_query: "My ball is in the bunker but in water, what rules apply?",
       chips: { 
-        rules: "Unplayable lie?", 
-        mental: "First tee nerves", 
-        tech: "Fix my slice",
-        training: "Putting drill",
-        fitness: "Warm up",
-        nutrition: "Hydration tip"
+        rules: ["Unplayable lie?", "Casual water?", "Out of bounds?", "Lost ball?", "Drop rules?"], 
+        mental: ["First tee nerves", "Pre-shot routine", "Stay focused", "Forget bad shot", "Putting confidence"], 
+        tech: ["Fix my slice", "Gain distance", "Bunker shot", "Pure contact", "Straight putts"],
+        training: ["Putting drill", "Driving drill", "Iron control", "Lob shots", "Sand saves"],
+        fitness: ["Warm up 5min", "Back stretch", "Core strength", "Hip mobility", "Avoid back pain"],
+        nutrition: ["Energy snack", "Hydration tips", "Pre-round meal", "Banana or bar?", "Caffeine on course?"]
       },
       ranges: ["Expert", "Advanced", "Intermediate", "Improving", "Beginner"],
       fitting: "Fitting Assistant",
@@ -167,12 +167,12 @@ const WatsonGolfAI = () => {
       vision_tip: "Je vois que ta balle est profondément enfoncée.\n\n**Ton objectif : sortir la balle proprement, point.**\n\n1. **Accepte de perdre de la distance :** Tu ne joues pas le drapeau. Tu joues la sortie.\n2. **Ouvre légèrement la face :** Le rough va la refermer à l’impact. Anticipe pour ne pas tirer à gauche.\n3. **Grip plus ferme :** Juste assez pour stabiliser la face dans l’herbe.\n4. **Balle en arrière :** Un demi-balle suffit pour un contact descendant.\n5. **Swing court, finish contrôlé :** Tu frappes pour sortir, pas pour impressionner.\n\n⚠️ La balle va rouler davantage, vise court du drapeau.",
       demo_query: "Ma balle se trouve dans le bunker mais dans l'eau, quelles sont les règles qui s'appliquent ?",
       chips: { 
-        rules: "Balle injouable ?", 
-        mental: "Gérer le stress", 
-        tech: "Corriger mon slice",
-        training: "Exercice putting",
-        fitness: "Échauffement",
-        nutrition: "Snack énergie"
+        rules: ["Balle injouable ?", "Eau fortuite ?", "Hors limites ?", "Balle perdue ?", "Dropper correct ?"], 
+        mental: ["Gérer le stress", "Routine pré-coup", "Rester focus", "Oublier un échec", "Confiance au putting"], 
+        tech: ["Corriger le slice", "Gagner en distance", "Sortie de bunker", "Contact plus pur", "Putter plus droit"],
+        training: ["Exercice putting", "Drill driving", "Contrôle des fers", "Approches levées", "Sortie de sable"],
+        fitness: ["Échauffement 5mn", "Étirement dos", "Renfo sangle abdo", "Mobilité hanches", "Éviter mal de dos"],
+        nutrition: ["Snack énergie", "Hydratation", "Repas avant partie", "Banane ou barre ?", "Caféine sur le parcours ?"]
       },
       ranges: ["Expert", "Confirmé", "Intermédiaire", "En progression", "Débutant"],
       fitting: "Aide au Fitting",
@@ -228,12 +228,12 @@ const WatsonGolfAI = () => {
       vision_tip: "Veo tu bola hundida en el rough.\n\n**Tu objetivo: sacarla limpia.**\n\n1. **Acepta perder distancia:** Juegas la salida, no la bandera.\n2. **Abre ligeramente la cara:** El rough la cerrará al impacto.\n3. **Agarre más firme:** Para estabilizar el palo en la hierba.\n4. **Bola atrás:** Media bola atrás para un golpe descendente.\n5. **Swing corto y controlado:** Golpea para salir.\n\n⚠️ La bola rodará más, juega corto.",
       demo_query: "Mi bola está en el bunker pero en el agua, ¿qué reglas se aplican?",
       chips: { 
-        rules: "¿Bola injugable?", 
-        mental: "Nervios tee 1", 
-        tech: "Corregir slice",
-        training: "Ejercicio putt",
-        fitness: "Calentamiento",
-        nutrition: "Snack energía"
+        rules: ["¿Bola injugable?", "¿Agua accidental?", "¿Fuera de límites?", "¿Bola perdida?", "¿Reglas de drop?"], 
+        mental: ["Nervios del 1", "Rutina pre-golpe", "Mantener el foco", "Olvidar mal golpe", "Confianza al putt"], 
+        tech: ["Arreglar slice", "Ganar distancia", "Sacada de bunker", "Contacto puro", "Putt recto"],
+        training: ["Ejercicio putt", "Ejercicio drive", "Control de hierros", "Globo", "Salida de arena"],
+        fitness: ["Calentamiento", "Estirar espalda", "Fuerza core", "Movilidad cadera", "Evitar dolor espalda"],
+        nutrition: ["Snack energía", "Hidratación", "Comida pre-ronda", "¿Plátano o barrita?", "¿Cafeína en campo?"]
       },
       ranges: ["Experto", "Avanzado", "Intermedio", "Mejorando", "Principiante"],
       fitting: "Asistente de Fitting",
@@ -289,12 +289,12 @@ const WatsonGolfAI = () => {
       vision_tip: "ボールがラフに深く沈んでいますね。\n\n**目標：きれいに脱出すること。**\n\n1. **距離を欲張らない:** ピンではなく脱出を優先。\n2. **フェースを少し開く:** インパクトで芝に負けてフェースが被るのを防ぎます。\n3. **グリップを強く:** 芝の抵抗に負けないように。\n4. **ボールは右足寄り:** ダウンブローに打ち込むため。\n5. **コンパクトなスイング:** 大振りせず、確実に脱出。\n\n⚠️ ランが多く出るので、手前に落としましょう。",
       demo_query: "ボールがバンカー内の水の中にあります。どのようなルールが適用されますか？",
       chips: { 
-        rules: "アンプレヤブル？", 
-        mental: "朝イチの緊張", 
-        tech: "スライス修正",
-        training: "パット練習",
-        fitness: "ウォーミングアップ",
-        nutrition: "エネルギー補給"
+        rules: ["アンプレヤブル？", "カジュアルウォーター？", "OBの処置？", "ロストボール？", "ドロップのルール？"], 
+        mental: ["朝イチの緊張", "プレショットルーティン", "集中力を保つ", "ミスを忘れる", "パットの自信"], 
+        tech: ["スライス修正", "飛距離アップ", "バンカーショット", "芯で捉える", "真っ直ぐパット"],
+        training: ["パット練習", "ドライバー練習", "アイアン制御", "ロブショット", "バンカー練習"],
+        fitness: ["5分でウォームアップ", "背中のストレッチ", "体幹トレーニング", "股関節の柔軟性", "腰痛予防"],
+        nutrition: ["エネルギー補給", "水分補給", "ラウンド前の食事", "バナナかバーか？", "カフェイン摂取？"]
       },
       ranges: ["エキスパート", "上級者", "中級者", "初級者", "初心者"],
       fitting: "フィッティング支援",
@@ -350,12 +350,12 @@ const WatsonGolfAI = () => {
       vision_tip: "공이 러프에 깊이 박혀 있네요.\n\n**목표: 깨끗하게 탈출하는 것.**\n\n1. **거리 욕심 버리기:** 핀을 보지 말고 탈출에 집중하세요.\n2. **페이스 약간 열기:** 임팩트 시 풀에 감겨 닫히는 것을 방지합니다.\n3. **그립 단단히 잡기:** 풀의 저항을 이겨내야 합니다.\n4. **공은 오른발 쪽에:** 다운블로로 찍어치기 위함입니다.\n5. **짧고 간결한 스윙:** 정확한 임팩트로 탈출하세요.\n\n⚠️ 런이 많이 발생하므로 핀보다 짧게 공략하세요.",
       demo_query: "공이 벙커 안 물에 있는데 어떤 규칙이 적용되나요?",
       chips: { 
-        rules: "언플레이어블?", 
-        mental: "첫 티샷 긴장", 
-        tech: "슬라이스 교정",
-        training: "퍼팅 연습",
-        fitness: "워밍업 루틴",
-        nutrition: "에너지 간식"
+        rules: ["언플레이어블?", "캐주얼 워터?", "OB 처치?", "분실구?", "드롭 규칙?"], 
+        mental: ["첫 티샷 긴장", "프리샷 루틴", "집중력 유지", "미스샷 잊기", "퍼팅 자신감"], 
+        tech: ["슬라이스 교정", "비거리 증가", "벙커 탈출", "정타 맞추기", "직진 퍼팅"],
+        training: ["퍼팅 연습", "드라이버 드릴", "아이언 컨트롤", "로브 샷", "벙커 연습"],
+        fitness: ["5분 워밍업", "등 스트레칭", "코어 강화", "고관절 유연성", "허리 통증 예방"],
+        nutrition: ["에너지 간식", "수분 섭취", "라운드 전 식사", "바나나 vs 바?", "카페인 섭취?"]
       },
       ranges: ["전문가", "상급자", "중급자", "향상 중", "초보자"],
       fitting: "피팅 어시스턴트",
@@ -477,6 +477,24 @@ const WatsonGolfAI = () => {
 
   const t = TRANSLATIONS[userProfile.language];
   const messagesEndRef = useRef(null);
+
+  // --- MEMOIZED RANDOM CHIPS ---
+  // Selects a random chip from the arrays whenever language or messages reset
+  const currentChips = useMemo(() => {
+    const selected = {};
+    const categories = ['rules', 'tech', 'mental', 'training', 'fitness', 'nutrition'];
+    
+    categories.forEach(key => {
+      const options = t.chips[key];
+      // Check if it's an array (new format) or string (fallback)
+      if (Array.isArray(options)) {
+        selected[key] = options[Math.floor(Math.random() * options.length)];
+      } else {
+        selected[key] = options;
+      }
+    });
+    return selected;
+  }, [userProfile.language, messages.length === 0]); // Re-roll when lang changes or convo resets
 
   // --- HANDLERS ---
   const updateProfile = (field, value) => {
@@ -1369,10 +1387,10 @@ const WatsonGolfAI = () => {
               {['rules', 'tech', 'mental', 'training', 'fitness', 'nutrition'].map(key => (
                 <button
                   key={key}
-                  onClick={() => handleSendMessage(t.chips[key])}
+                  onClick={() => handleSendMessage(currentChips[key])}
                   className="whitespace-nowrap px-4 py-2 bg-slate-800 rounded-full text-sm font-medium border border-slate-700 hover:border-lime-500/50 transition-colors text-white"
                 >
-                  {t.chips[key]}
+                  {currentChips[key]}
                 </button>
               ))}
             </div>
