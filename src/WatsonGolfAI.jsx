@@ -103,7 +103,7 @@ const WatsonGolfAI = () => {
       tendency: "Shot Tendency",
       tendencies: { straight: "Straight", draw: "Draw", fade: "Fade", hook: "Hook", slice: "Slice" },
       reset: "Reset Conversation",
-      vision_tip: "I see your ball is deep in the rough.\n\nTip: Grip the club tighter to avoid it twisting in the grass, and play the ball slightly back in your stance.",
+      vision_tip: "I see your ball is deep in the rough. Here is a pro tip:\n\n**Goal: Get it out clean. Period.**\n\n1. **Accept losing distance:** You're playing the exit, not the flag. Don't be greedy.\n2. **Open the face slightly:** The rough will close it at impact. Anticipate to avoid pulling left.\n3. **Firmer grip:** Stabilize the club against the grass. Firm, not tense.\n4. **Ball back in stance:** Half a ball back for a descending blow.\n5. **Short swing, controlled finish:** Hit to escape, not to impress. \n\n⚠️ Expect more roll, so play short of the flag.",
       demo_query: "My ball is in the bunker but in water, what rules apply?",
       chips: { 
         rules: "Unplayable lie?", 
@@ -164,7 +164,7 @@ const WatsonGolfAI = () => {
       tendency: "Tendance naturelle",
       tendencies: { straight: "Droit", draw: "Draw", fade: "Fade", hook: "Hook", slice: "Slice" },
       reset: "Réinitialiser",
-      vision_tip: "Je vois que ta balle est enfoncée dans le rough.\n\nConseil : Tiens ton club plus fermement pour éviter qu'il ne tourne dans l'herbe, et joue la balle légèrement en arrière dans ton stance.",
+      vision_tip: "Je vois que ta balle est profondément enfoncée.\n\n**Ton objectif : sortir la balle proprement, point.**\n\n1. **Accepte de perdre de la distance :** Tu ne joues pas le drapeau. Tu joues la sortie.\n2. **Ouvre légèrement la face :** Le rough va la refermer à l’impact. Anticipe pour ne pas tirer à gauche.\n3. **Grip plus ferme :** Juste assez pour stabiliser la face dans l’herbe.\n4. **Balle en arrière :** Un demi-balle suffit pour un contact descendant.\n5. **Swing court, finish contrôlé :** Tu frappes pour sortir, pas pour impressionner.\n\n⚠️ La balle va rouler davantage, vise court du drapeau.",
       demo_query: "Ma balle se trouve dans le bunker mais dans l'eau, quelles sont les règles qui s'appliquent ?",
       chips: { 
         rules: "Balle injouable ?", 
@@ -225,7 +225,7 @@ const WatsonGolfAI = () => {
       premiumFeature: "Función Premium",
       upgradeToUnlock: "Suscríbete para desbloquear",
       reset: "Reiniciar",
-      vision_tip: "Veo tu bola hundida en el rough.\n\nConsejo: Agarra el palo con más fuerza para evitar que gire en la hierba y juega la bola un poco más atrás.",
+      vision_tip: "Veo tu bola hundida en el rough.\n\n**Tu objetivo: sacarla limpia.**\n\n1. **Acepta perder distancia:** Juegas la salida, no la bandera.\n2. **Abre ligeramente la cara:** El rough la cerrará al impacto.\n3. **Agarre más firme:** Para estabilizar el palo en la hierba.\n4. **Bola atrás:** Media bola atrás para un golpe descendente.\n5. **Swing corto y controlado:** Golpea para salir.\n\n⚠️ La bola rodará más, juega corto.",
       demo_query: "Mi bola está en el bunker pero en el agua, ¿qué reglas se aplican?",
       chips: { 
         rules: "¿Bola injugable?", 
@@ -286,7 +286,7 @@ const WatsonGolfAI = () => {
       premiumFeature: "プレミアム機能",
       upgradeToUnlock: "アップグレードして解除",
       reset: "会話をリセット",
-      vision_tip: "ボールがラフに沈んでいますね。\n\nヒント：芝に負けないようにグリップを強く握り、ボールを少し右足寄りに置いてください。",
+      vision_tip: "ボールがラフに深く沈んでいますね。\n\n**目標：きれいに脱出すること。**\n\n1. **距離を欲張らない:** ピンではなく脱出を優先。\n2. **フェースを少し開く:** インパクトで芝に負けてフェースが被るのを防ぎます。\n3. **グリップを強く:** 芝の抵抗に負けないように。\n4. **ボールは右足寄り:** ダウンブローに打ち込むため。\n5. **コンパクトなスイング:** 大振りせず、確実に脱出。\n\n⚠️ ランが多く出るので、手前に落としましょう。",
       demo_query: "ボールがバンカー内の水の中にあります。どのようなルールが適用されますか？",
       chips: { 
         rules: "アンプレヤブル？", 
@@ -347,7 +347,7 @@ const WatsonGolfAI = () => {
       premiumFeature: "프리미엄 기능",
       upgradeToUnlock: "업그레이드하여 잠금 해제",
       reset: "대화 초기화",
-      vision_tip: "공이 러프에 깊이 박혀 있네요.\n\n팁: 풀의 저항을 이겨내도록 그립을 단단히 잡고, 공을 평소보다 약간 오른발 쪽에 두세요.",
+      vision_tip: "공이 러프에 깊이 박혀 있네요.\n\n**목표: 깨끗하게 탈출하는 것.**\n\n1. **거리 욕심 버리기:** 핀을 보지 말고 탈출에 집중하세요.\n2. **페이스 약간 열기:** 임팩트 시 풀에 감겨 닫히는 것을 방지합니다.\n3. **그립 단단히 잡기:** 풀의 저항을 이겨내야 합니다.\n4. **공은 오른발 쪽에:** 다운블로로 찍어치기 위함입니다.\n5. **짧고 간결한 스윙:** 정확한 임팩트로 탈출하세요.\n\n⚠️ 런이 많이 발생하므로 핀보다 짧게 공략하세요.",
       demo_query: "공이 벙커 안 물에 있는데 어떤 규칙이 적용되나요?",
       chips: { 
         rules: "언플레이어블?", 
@@ -376,8 +376,8 @@ const WatsonGolfAI = () => {
   };
 
   const handicapRanges = [
-    { value: "0-10", descIndex: 0, dispersionRate: 0.05 },
-    { value: "11-20", descIndex: 1, dispersionRate: 0.10 },
+    { value: "0-9", descIndex: 0, dispersionRate: 0.05 },
+    { value: "10-20", descIndex: 1, dispersionRate: 0.10 },
     { value: "21-30", descIndex: 2, dispersionRate: 0.15 },
     { value: "31-40", descIndex: 3, dispersionRate: 0.20 },
     { value: "41-54", descIndex: 4, dispersionRate: 0.20 }
@@ -399,7 +399,7 @@ const WatsonGolfAI = () => {
       { id: 'h4', sender: 'watson', text: "Règle 16.1c : Tu as droit à un dégagement gratuit DANS le bunker au point sec le plus proche. Si le bunker est totalement inondé, tu peux dropper dehors avec 1 coup de pénalité.\n\nTu veux savoir quel club jouer pour cette sortie ?", category: 'rules', timestamp: t - 27990000 },
       
       { id: 'h5', sender: 'user', text: "📸 [Ma balle est pluggée]", image: "https://zupimages.net/up/16/12/qsii.jpg", category: 'user', timestamp: t - 25000000 },
-      { id: 'h6', sender: 'watson', text: "Règle 16.3 : Balle enfoncée en zone générale = Dégagement gratuit ! (Droppe à une longueur de club).\n\nSi tu es dans un bunker (pas de dégagement gratuit) ou que tu dois la jouer : Face fermée, plante le club sèchement juste derrière la balle. Laisse le club s'enfoncer.\n\nOn applique la règle ou tu la joues ?", category: 'rules', timestamp: t - 24990000 },
+      { id: 'h6', sender: 'watson', text: "Quand ta balle est profondément enfoncée dans le rough\nTon objectif : sortir la balle proprement, point.\n\nAccepte de perdre de la distance\nTu ne joues pas le drapeau. Tu joues la sortie. Si tu cherches la distance, tu te mets en difficulté.\n\nOuvre légèrement la face avant de prendre le grip\nLe rough va refermer la face à l’impact. Si tu ne l’anticipes pas, tu vas tirer à gauche.\n\nPrends un grip un peu plus ferme que d’habitude\nJuste assez pour stabiliser la face dans l’herbe. Ferme, pas crispé.\n\nMets la balle légèrement en arrière dans le stance\nUn demi-balle suffit. Tu veux un contact descendant, pas balayer.\n\nUn swing court avec un finish contrôlé\nAvec moins d’amplitude mais plus de maîtrise. Tu frappes pour sortir, pas pour impressionner. Et n'oublie pas la balle va rouler davantage donc il vaut mieux etre court du drapeaux\n\nTu veux des conseils pour l'approche suivante ?", category: 'tech', timestamp: t - 24990000 },
       
       { id: 'h7', sender: 'user', text: "Je stresse au départ du 1.", category: 'user', timestamp: t - 20000000 },
       { id: 'h8', sender: 'watson', text: "C'est normal Stéphane. Fais 3 grandes respirations abdominales. Visualise la trajectoire, la cible où tu veux atterrir exactement et pas les obstacles. Dis-toi : 'Je veux atterrir à cet endroit précis en fade par exemple ?' Respire et Feu.\n\nTu te sens mieux pour taper ce drive ?", category: 'mental', timestamp: t - 19995000 },
@@ -408,7 +408,7 @@ const WatsonGolfAI = () => {
       { id: 'h10', sender: 'watson', text: "Privilégie les amandes, une banane ou une barre protéinée. Bois de l'eau tous les 3 trous, soit 1.5 litres minimum à cette température.\n\nAs-tu assez d'eau dans ton sac ?", category: 'nutrition', timestamp: t - 14995000 },
       
       { id: 'h11', sender: 'user', text: "Exercice pour l'échauffement ?", category: 'user', timestamp: t - 10000000 },
-      { id: 'h12', sender: 'watson', text: "Voici un échauffement précis (10 min) :\n1. Rotations du cou (10x)\n2. Rotations d'épaules avec club (15x)\n3. Rotations de hanches (10 cercles/côté)\n4. Squats (15 reps)\n5. Rotations des chevilles (10x/pied) - Crucial pour éviter les entorses !\n\nUn bon échauffement est vital pour la performance et la santé.\n\nPrêt à taper ?", category: 'fitness', timestamp: t - 9995000 },
+      { id: 'h12', sender: 'watson', text: "Voici 5 exercices pour s'échauffer complètement en 10 min : 1. Rotations du cou (10x)\n2. Rotations d'épaules avec club (15x)\n3. Rotations de hanches (10 cercles/côté)\n4. Squats (15 reps)\n5. Rotations des chevilles (10x/pied) - Crucial pour éviter les entorses !\n\nUn bon échauffement est vital pour la performance et la santé.\n\nPrêt à taper ?", category: 'fitness', timestamp: t - 9995000 },
       
       { id: 'h13', sender: 'user', text: "Ma balle a bougé quand je l'ai marquée.", category: 'user', timestamp: t - 5000000 },
       { id: 'h14', sender: 'watson', text: "Si c'est accidentel lors du marquage (Règle 13.1d), pas de pénalité. Replace-la simplement.\n\nElle est bien replacée à son endroit d'origine ?", category: 'rules', timestamp: t - 4995000 },
@@ -728,16 +728,21 @@ const WatsonGolfAI = () => {
               {userProfile.plan === 'premium' ? <Crown className="w-6 h-6 text-white" fill="currentColor" /> : <span className="font-bold text-slate-900 text-lg">W</span>}
             </div>
             <div>
-              <h1 className="font-bold text-white text-xl tracking-tight">Watson<span className="text-lime-400">.ai</span></h1>
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <span className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                  {t.online}
-                </span>
-                <span className="text-slate-600">•</span>
-                <span className="text-lime-400/80 font-medium flex items-center gap-1">
-                  <span>{LANGUAGES.find(l => l.code === userProfile.language)?.flag}</span>
-                  {userProfile.firstName ? `${userProfile.firstName} • HCP ${userProfile.handicap.value}` : `HCP ${userProfile.handicap.value}`}
+              <h1 className="font-bold text-white text-xl tracking-tight leading-tight">Watson<span className="text-lime-400">.ai</span></h1>
+              <div className="flex flex-col text-xs mt-0.5">
+                <div className="flex items-center gap-2 text-slate-400">
+                  <span className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    {t.online}
+                  </span>
+                  <span className="text-slate-600">•</span>
+                  <span className="flex items-center gap-1 text-slate-300">
+                    <span>{LANGUAGES.find(l => l.code === userProfile.language)?.flag}</span>
+                    {userProfile.firstName}
+                  </span>
+                </div>
+                <span className="text-lime-400/80 font-medium">
+                  HCP {userProfile.handicap.value}
                 </span>
               </div>
             </div>
@@ -1138,7 +1143,7 @@ const WatsonGolfAI = () => {
                           placeholder="180"
                           value={fittingData.height}
                           onChange={(e) => setFittingData({...fittingData, height: e.target.value})}
-                          className="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
                         />
                       </div>
                       <div className="space-y-1">
