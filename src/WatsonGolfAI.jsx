@@ -390,35 +390,37 @@ const WatsonGolfAI = () => {
     const t = yesterday.getTime();
     
     return [
-      { id: 'h1', sender: 'user', text: "Distance pour le fer 7 ?", category: 'user', timestamp: t - 36000000 },
-      { id: 'h2', sender: 'watson', text: "Basé sur ton profil, ton Fer 7 porte à environ 140m avec une dispersion de ±14m. Joue-le bien en rythme, c'est plus important que la force.", category: 'tech', timestamp: t - 35995000 },
+      { id: 'h1', sender: 'user', text: "Quelle est ma distance avec un fer 7 par beau temps en partant du rough ?", category: 'user', timestamp: t - 36000000 },
+      { id: 'h1b', sender: 'watson', text: "Comment la balle est-elle lyée ? Est-elle portée ou enfoncée ?", category: 'tech', timestamp: t - 35995000 },
+      { id: 'h1c', sender: 'user', text: "Posée sur l'herbe.", category: 'user', timestamp: t - 35990000 },
+      { id: 'h2', sender: 'watson', text: "Attention au 'flyer' ! La balle va sortir vite avec peu de spin.\n\nDistance estimée : 155m (au lieu de 140m).\nRoule : Prévois au moins 10-15m de roule après l'impact.\nConseil : Joue-le bien en rythme, c'est plus important que la force. Vise l'entrée du green.\n\nVeux-tu que je calcule la distance ajustée avec le vent ?", category: 'tech', timestamp: t - 35985000 },
       
       { id: 'h3', sender: 'user', text: "Je suis dans un bunker rempli d'eau.", category: 'user', timestamp: t - 28000000 },
-      { id: 'h4', sender: 'watson', text: "Règle 16.1c : Tu as droit à un dégagement gratuit DANS le bunker au point sec le plus proche. Si le bunker est totalement inondé, tu peux dropper dehors avec 1 coup de pénalité.", category: 'rules', timestamp: t - 27990000 },
+      { id: 'h4', sender: 'watson', text: "Règle 16.1c : Tu as droit à un dégagement gratuit DANS le bunker au point sec le plus proche. Si le bunker est totalement inondé, tu peux dropper dehors avec 1 coup de pénalité.\n\nTu veux savoir quel club jouer pour cette sortie ?", category: 'rules', timestamp: t - 27990000 },
       
       { id: 'h5', sender: 'user', text: "📸 [Ma balle est pluggée]", image: "https://zupimages.net/up/16/12/qsii.jpg", category: 'user', timestamp: t - 25000000 },
-      { id: 'h6', sender: 'watson', text: "Balle pluggée (oeuf au plat) ! Garde la face square ou légèrement fermée, poids à gauche, plante le club sèchement juste derrière la balle. Laisse le club s'enfoncer.", category: 'tech', timestamp: t - 24990000 },
+      { id: 'h6', sender: 'watson', text: "Règle 16.3 : Balle enfoncée en zone générale = Dégagement gratuit ! (Droppe à une longueur de club).\n\nSi tu es dans un bunker (pas de dégagement gratuit) ou que tu dois la jouer : Face fermée, plante le club sèchement juste derrière la balle. Laisse le club s'enfoncer.\n\nOn applique la règle ou tu la joues ?", category: 'rules', timestamp: t - 24990000 },
       
       { id: 'h7', sender: 'user', text: "Je stresse au départ du 1.", category: 'user', timestamp: t - 20000000 },
-      { id: 'h8', sender: 'watson', text: "C'est normal Stéphane. Fais 3 grandes respirations abdominales. Visualise la trajectoire, la cible où tu veux atterrir exactement et pas les obstacles. Dis-toi : 'Je veux atterrir à cet endroit précis en fade par exemple ?' Respire et Feu.", category: 'mental', timestamp: t - 19995000 },
+      { id: 'h8', sender: 'watson', text: "C'est normal Stéphane. Fais 3 grandes respirations abdominales. Visualise la trajectoire, la cible où tu veux atterrir exactement et pas les obstacles. Dis-toi : 'Je veux atterrir à cet endroit précis en fade par exemple ?' Respire et Feu.\n\nTu te sens mieux pour taper ce drive ?", category: 'mental', timestamp: t - 19995000 },
       
       { id: 'h9', sender: 'user', text: "Quel snack pour tenir 18 trous ?", category: 'user', timestamp: t - 15000000 },
-      { id: 'h10', sender: 'watson', text: "Privilégie les amandes, une banane ou une barre protéinée. Bois de l'eau tous les 3 trous, soit 1.5 litres minimum à cette température.", category: 'nutrition', timestamp: t - 14995000 },
+      { id: 'h10', sender: 'watson', text: "Privilégie les amandes, une banane ou une barre protéinée. Bois de l'eau tous les 3 trous, soit 1.5 litres minimum à cette température.\n\nAs-tu assez d'eau dans ton sac ?", category: 'nutrition', timestamp: t - 14995000 },
       
       { id: 'h11', sender: 'user', text: "Exercice pour l'échauffement ?", category: 'user', timestamp: t - 10000000 },
-      { id: 'h12', sender: 'watson', text: "Voici 5 exercices pour s'échauffer complètement en 10 min : 1. Rotations du cou 2. Rotations d'épaules 3. Rotations de hanches 4. Squats 5. Swings à une main.", category: 'fitness', timestamp: t - 9995000 },
+      { id: 'h12', sender: 'watson', text: "Voici un échauffement précis (10 min) :\n1. Rotations du cou (10x)\n2. Rotations d'épaules avec club (15x)\n3. Rotations de hanches (10 cercles/côté)\n4. Squats (15 reps)\n5. Rotations des chevilles (10x/pied) - Crucial pour éviter les entorses !\n\nUn bon échauffement est vital pour la performance et la santé.\n\nPrêt à taper ?", category: 'fitness', timestamp: t - 9995000 },
       
       { id: 'h13', sender: 'user', text: "Ma balle a bougé quand je l'ai marquée.", category: 'user', timestamp: t - 5000000 },
-      { id: 'h14', sender: 'watson', text: "Si c'est accidentel lors du marquage (Règle 13.1d), pas de pénalité. Replace-la simplement.", category: 'rules', timestamp: t - 4995000 },
+      { id: 'h14', sender: 'watson', text: "Si c'est accidentel lors du marquage (Règle 13.1d), pas de pénalité. Replace-la simplement.\n\nElle est bien replacée à son endroit d'origine ?", category: 'rules', timestamp: t - 4995000 },
       
       { id: 'h15', sender: 'user', text: "Mon swing est trop rapide.", category: 'user', timestamp: t - 2000000 },
-      { id: 'h16', sender: 'watson', text: "Essaie le tempo 'Tour' : compte '1-et-2' dans ta tête. 1 pour la montée, 'et' la transition, 2 l'impact.", category: 'tech', timestamp: t - 1995000 },
+      { id: 'h16', sender: 'watson', text: "Essaie le tempo 'Tour' : compte '1-et-2' dans ta tête. 1 pour la montée, 'et' la transition, 2 l'impact.\n\nOn essaye ce tempo au practice ?", category: 'tech', timestamp: t - 1995000 },
       
       { id: 'h17', sender: 'user', text: "📸 [Photo]", image: "https://www.camposdegolf.es/images/campos/tarjetas-juego-rondas-entrenamiento.jpg", category: 'user', timestamp: t - 1000000 },
-      { id: 'h18', sender: 'watson', text: "Belle carte de score ! Un birdie au 18, bravo. Continue comme ça.", category: 'mental', timestamp: t - 995000 },
+      { id: 'h18', sender: 'watson', text: "Belle carte de score ! Un birdie au 18, bravo. Continue comme ça.\n\nQuel est ton objectif pour les 9 derniers trous ?", category: 'mental', timestamp: t - 995000 },
       
       { id: 'h19', sender: 'user', text: "Il va pleuvoir ?", category: 'user', timestamp: t - 500000 },
-      { id: 'h20', sender: 'watson', text: "Le ciel se couvre mais pas de pluie prévue avant 17h sur Marrakech.", category: 'weather', timestamp: t - 495000 },
+      { id: 'h20', sender: 'watson', text: "Le ciel se couvre mais pas de pluie prévue avant 17h sur Marrakech.\n\nPrévois-tu de jouer 18 trous ?", category: 'weather', timestamp: t - 495000 },
     ];
   };
 
@@ -449,6 +451,7 @@ const WatsonGolfAI = () => {
     results: null
   });
   const [showFittingInfo, setShowFittingInfo] = useState(false);
+  const [showFittingMenu, setShowFittingMenu] = useState(false);
 
   const [showSettings, setShowSettings] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -1093,9 +1096,18 @@ const WatsonGolfAI = () => {
               {/* SECTION: FITTING ASSISTANT (NEW) */}
               <section className="space-y-4">
                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
-                        <Ruler className="w-4 h-4" /> {t.fitting}
-                    </h3>
+                    <div className="flex items-center gap-3">
+                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                            <Ruler className="w-4 h-4" /> {t.fitting}
+                        </h3>
+                        {/* Toggle Switch */}
+                        <button 
+                            onClick={() => setShowFittingMenu(!showFittingMenu)}
+                            className={`w-10 h-5 rounded-full relative transition-colors ${showFittingMenu ? 'bg-lime-500' : 'bg-slate-700'}`}
+                        >
+                            <div className={`w-3 h-3 bg-white rounded-full absolute top-1 transition-all ${showFittingMenu ? 'left-6' : 'left-1'}`} />
+                        </button>
+                    </div>
                     <button 
                       onClick={() => setShowFittingInfo(!showFittingInfo)}
                       className="text-slate-400 hover:text-white"
@@ -1114,7 +1126,8 @@ const WatsonGolfAI = () => {
                    </div>
                  )}
 
-                 <div className="bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-4">
+                 {showFittingMenu && (
+                 <div className="bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-4 animate-in fade-in slide-in-from-top-2">
                     <p className="text-xs text-slate-400">{t.fittingDesc}</p>
                     
                     <div className="grid grid-cols-3 gap-2">
@@ -1206,6 +1219,7 @@ const WatsonGolfAI = () => {
                       </div>
                     )}
                  </div>
+                 )}
               </section>
 
               {/* SECTION: DISTANCES (Premium) */}
