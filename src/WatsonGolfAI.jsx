@@ -2,7 +2,7 @@
   TAILWIND OK
 </div>
 import React, { useState, useEffect, useRef } from 'react';
-import { Mic, Send, Menu, Sun, Wind, Sparkles, X, Keyboard, Trophy, User, RotateCcw, Check, UserCircle, Activity, Globe, Camera, Crown, Mail, Phone, CreditCard, MapPin, Flag, Ruler, Lock, Settings, TrendingUp } from 'lucide-react';
+import { Mic, Send, Menu, Sun, Wind, Sparkles, X, Keyboard, Trophy, User, RotateCcw, Check, UserCircle, Activity, Globe, Camera, Crown, Mail, Phone, CreditCard, MapPin, Flag, Ruler, Lock, Settings, TrendingUp, History, Info, ChevronRight, Calculator } from 'lucide-react';
 
 const WatsonGolfAI = () => {
   // --- TRANSLATIONS & DATA ---
@@ -113,7 +113,21 @@ const WatsonGolfAI = () => {
         fitness: "Warm up",
         nutrition: "Hydration tip"
       },
-      ranges: ["Expert", "Advanced", "Intermediate", "Improving", "Beginner"]
+      ranges: ["Expert", "Advanced", "Intermediate", "Improving", "Beginner"],
+      fitting: "Fitting Assistant",
+      fittingDesc: "Find your specs (Wishon/Ping)",
+      calculate: "Calculate",
+      height: "Height (cm)",
+      wristToFloor: "Wrist-Floor (cm)",
+      carry7: "7-Iron Carry (m)",
+      weight: "Weight (kg)",
+      age: "Age",
+      frequency: "Freq (/week)",
+      recommendation: "Recommendation",
+      length: "Length",
+      lie: "Lie Angle",
+      shaft: "Shaft Flex",
+      fittingDisclaimer: "This tool provides theoretical estimates based on standard charts (Wishon, Patriot Golf, Ping). It does NOT replace a dynamic fitting session with a professional."
     },
     fr: {
       greeting: "Salut ! Je suis Watson, ton Caddie IA 24/7. \n\nArbitrage, technique, entraînement, mental, physique, nutrition... Je suis là pour t'aider dans tous les domaines. On y va ?",
@@ -160,7 +174,21 @@ const WatsonGolfAI = () => {
         fitness: "Échauffement",
         nutrition: "Snack énergie"
       },
-      ranges: ["Expert", "Confirmé", "Intermédiaire", "En progression", "Débutant"]
+      ranges: ["Expert", "Confirmé", "Intermédiaire", "En progression", "Débutant"],
+      fitting: "Aide au Fitting",
+      fittingDesc: "Trouvez vos specs (Wishon/Ping)",
+      calculate: "Calculer",
+      height: "Taille (cm)",
+      wristToFloor: "Poignet-Sol (cm)",
+      carry7: "Portée Fer 7 (m)",
+      weight: "Poids (kg)",
+      age: "Âge",
+      frequency: "Fréq (/sem)",
+      recommendation: "Recommandation",
+      length: "Longueur",
+      lie: "Angle de Lie",
+      shaft: "Flex Shaft",
+      fittingDisclaimer: "Cet outil fournit une estimation théorique basée sur des chartes standards (Wishon, Patriot Golf, Ping). Il NE remplace PAS un fitting dynamique avec un professionnel."
     },
     es: {
       greeting: "¡Hola! Soy Watson, tu Caddie IA 24/7. \n\nReglas, técnica, entrenamiento, mental, físico, nutrición... Estoy aquí para ayudarte en todos los aspectos de tu juego. ¿Listo?",
@@ -207,7 +235,21 @@ const WatsonGolfAI = () => {
         fitness: "Calentamiento",
         nutrition: "Snack energía"
       },
-      ranges: ["Experto", "Avanzado", "Intermedio", "Mejorando", "Principiante"]
+      ranges: ["Experto", "Avanzado", "Intermedio", "Mejorando", "Principiante"],
+      fitting: "Asistente de Fitting",
+      fittingDesc: "Encuentra tus specs (Wishon/Ping)",
+      calculate: "Calcular",
+      height: "Altura (cm)",
+      wristToFloor: "Muñeca-Suelo (cm)",
+      carry7: "Vuelo Hierro 7 (m)",
+      weight: "Peso (kg)",
+      age: "Edad",
+      frequency: "Frec (/sem)",
+      recommendation: "Recomendación",
+      length: "Longitud",
+      lie: "Angulo Lie",
+      shaft: "Flexión Eje",
+      fittingDisclaimer: "Esta herramienta proporciona estimaciones teóricas basadas en tablas estándar. NO reemplaza un fitting dinámico profesional."
     },
     ja: {
       greeting: "こんにちは！24時間対応のAIキャディ、ワトソンです。\n\nルール、技術、練習、メンタル、フィジカル、栄養... ゴルフのあらゆる面でサポートします。準備はいいですか？",
@@ -254,7 +296,21 @@ const WatsonGolfAI = () => {
         fitness: "ウォーミングアップ",
         nutrition: "エネルギー補給"
       },
-      ranges: ["エキスパート", "上級者", "中級者", "初級者", "初心者"]
+      ranges: ["エキスパート", "上級者", "中級者", "初級者", "初心者"],
+      fitting: "フィッティング支援",
+      fittingDesc: "スペックを診断 (Wishon/Ping)",
+      calculate: "計算する",
+      height: "身長 (cm)",
+      wristToFloor: "手首から床 (cm)",
+      carry7: "7番アイアン飛距離 (m)",
+      weight: "体重 (kg)",
+      age: "年齢",
+      frequency: "頻度 (/週)",
+      recommendation: "推奨スペック",
+      length: "長さ",
+      lie: "ライ角",
+      shaft: "シャフト硬さ",
+      fittingDisclaimer: "このツールは標準チャートに基づく理論上の推定値を提供します。プロによる動的フィッティングの代わりにはなりません。"
     },
     ko: {
       greeting: "안녕하세요! 24시간 대기 중인 AI 캐디 왓슨입니다. \n\n규칙, 기술, 훈련, 멘탈, 피지컬, 영양... 골프의 모든 면에서 도와드릴 수 있습니다. 준비되셨나요?",
@@ -301,7 +357,21 @@ const WatsonGolfAI = () => {
         fitness: "워밍업 루틴",
         nutrition: "에너지 간식"
       },
-      ranges: ["전문가", "상급자", "중급자", "향상 중", "초보자"]
+      ranges: ["전문가", "상급자", "중급자", "향상 중", "초보자"],
+      fitting: "피팅 어시스턴트",
+      fittingDesc: "스펙 찾기 (Wishon/Ping)",
+      calculate: "계산하기",
+      height: "키 (cm)",
+      wristToFloor: "손목-바닥 길이 (cm)",
+      carry7: "7번 아이언 캐리 (m)",
+      weight: "몸무게 (kg)",
+      age: "나이",
+      frequency: "빈도 (/주)",
+      recommendation: "추천 스펙",
+      length: "길이",
+      lie: "라이각",
+      shaft: "샤프트 강도",
+      fittingDisclaimer: "이 도구는 표준 차트를 기반으로 한 이론적 추정치를 제공합니다. 전문가의 다이나믹 피팅을 대체하지 않습니다."
     }
   };
 
@@ -312,6 +382,45 @@ const WatsonGolfAI = () => {
     { value: "31-40", descIndex: 3, dispersionRate: 0.20 },
     { value: "41-54", descIndex: 4, dispersionRate: 0.20 }
   ];
+
+  // --- MOCK HISTORY DATA ---
+  const getMockHistory = () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const t = yesterday.getTime();
+    
+    return [
+      { id: 'h1', sender: 'user', text: "Distance pour le fer 7 ?", category: 'user', timestamp: t - 36000000 },
+      { id: 'h2', sender: 'watson', text: "Basé sur ton profil, ton Fer 7 porte à environ 140m avec une dispersion de ±14m. Joue-le bien en rythme, c'est plus important que la force.", category: 'tech', timestamp: t - 35995000 },
+      
+      { id: 'h3', sender: 'user', text: "Je suis dans un bunker rempli d'eau.", category: 'user', timestamp: t - 28000000 },
+      { id: 'h4', sender: 'watson', text: "Règle 16.1c : Tu as droit à un dégagement gratuit DANS le bunker au point sec le plus proche. Si le bunker est totalement inondé, tu peux dropper dehors avec 1 coup de pénalité.", category: 'rules', timestamp: t - 27990000 },
+      
+      { id: 'h5', sender: 'user', text: "📸 [Ma balle est pluggée]", image: "https://zupimages.net/up/16/12/qsii.jpg", category: 'user', timestamp: t - 25000000 },
+      { id: 'h6', sender: 'watson', text: "Balle pluggée (oeuf au plat) ! Garde la face square ou légèrement fermée, poids à gauche, plante le club sèchement juste derrière la balle. Laisse le club s'enfoncer.", category: 'tech', timestamp: t - 24990000 },
+      
+      { id: 'h7', sender: 'user', text: "Je stresse au départ du 1.", category: 'user', timestamp: t - 20000000 },
+      { id: 'h8', sender: 'watson', text: "C'est normal Stéphane. Fais 3 grandes respirations abdominales. Visualise la trajectoire, la cible où tu veux atterrir exactement et pas les obstacles. Dis-toi : 'Je veux atterrir à cet endroit précis en fade par exemple ?' Respire et Feu.", category: 'mental', timestamp: t - 19995000 },
+      
+      { id: 'h9', sender: 'user', text: "Quel snack pour tenir 18 trous ?", category: 'user', timestamp: t - 15000000 },
+      { id: 'h10', sender: 'watson', text: "Privilégie les amandes, une banane ou une barre protéinée. Bois de l'eau tous les 3 trous, soit 1.5 litres minimum à cette température.", category: 'nutrition', timestamp: t - 14995000 },
+      
+      { id: 'h11', sender: 'user', text: "Exercice pour l'échauffement ?", category: 'user', timestamp: t - 10000000 },
+      { id: 'h12', sender: 'watson', text: "Voici 5 exercices pour s'échauffer complètement en 10 min : 1. Rotations du cou 2. Rotations d'épaules 3. Rotations de hanches 4. Squats 5. Swings à une main.", category: 'fitness', timestamp: t - 9995000 },
+      
+      { id: 'h13', sender: 'user', text: "Ma balle a bougé quand je l'ai marquée.", category: 'user', timestamp: t - 5000000 },
+      { id: 'h14', sender: 'watson', text: "Si c'est accidentel lors du marquage (Règle 13.1d), pas de pénalité. Replace-la simplement.", category: 'rules', timestamp: t - 4995000 },
+      
+      { id: 'h15', sender: 'user', text: "Mon swing est trop rapide.", category: 'user', timestamp: t - 2000000 },
+      { id: 'h16', sender: 'watson', text: "Essaie le tempo 'Tour' : compte '1-et-2' dans ta tête. 1 pour la montée, 'et' la transition, 2 l'impact.", category: 'tech', timestamp: t - 1995000 },
+      
+      { id: 'h17', sender: 'user', text: "📸 [Photo]", image: "https://www.camposdegolf.es/images/campos/tarjetas-juego-rondas-entrenamiento.jpg", category: 'user', timestamp: t - 1000000 },
+      { id: 'h18', sender: 'watson', text: "Belle carte de score ! Un birdie au 18, bravo. Continue comme ça.", category: 'mental', timestamp: t - 995000 },
+      
+      { id: 'h19', sender: 'user', text: "Il va pleuvoir ?", category: 'user', timestamp: t - 500000 },
+      { id: 'h20', sender: 'watson', text: "Le ciel se couvre mais pas de pluie prévue avant 17h sur Marrakech.", category: 'weather', timestamp: t - 495000 },
+    ];
+  };
 
   // --- STATES ---
   const [userProfile, setUserProfile] = useState({
@@ -330,27 +439,38 @@ const WatsonGolfAI = () => {
     distances: CLUBS.reduce((acc, club) => ({ ...acc, [club.name]: club.defaultDist }), {})
   });
 
+  const [fittingData, setFittingData] = useState({
+    height: '',
+    wristToFloor: '',
+    carry7: '',
+    weight: '',
+    age: '',
+    frequency: '',
+    results: null
+  });
+  const [showFittingInfo, setShowFittingInfo] = useState(false);
+
   const [showSettings, setShowSettings] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingType, setProcessingType] = useState('text'); // 'text' or 'vision'
   const [inputText, setInputText] = useState('');
   const [showKeyboard, setShowKeyboard] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
   
+  // Initialize with greeting ONLY
   const [messages, setMessages] = useState([]);
   
-  // Initialize greeting
+  // Initialize greeting text based on current language
   useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([{
-        id: 1,
-        sender: 'watson',
-        type: 'greeting',
-        text: TRANSLATIONS[userProfile.language].greeting,
-        category: 'general'
-      }]);
-    }
-  }, []);
+    setMessages([{
+      id: Date.now(),
+      sender: 'watson',
+      type: 'greeting',
+      text: TRANSLATIONS[userProfile.language].greeting,
+      category: 'general'
+    }]);
+  }, []); // Run once on mount
 
   const t = TRANSLATIONS[userProfile.language];
   const messagesEndRef = useRef(null);
@@ -360,6 +480,11 @@ const WatsonGolfAI = () => {
     setUserProfile(prev => {
       const newProfile = { ...prev, [field]: value };
       if (field === 'language' && prev.language !== value) {
+        // Update greeting message immediately
+        setMessages(current => current.map(msg => 
+          msg.type === 'greeting' ? { ...msg, text: TRANSLATIONS[value].greeting } : msg
+        ));
+
         setTimeout(() => {
           setMessages(msgs => [...msgs, {
             id: Date.now(),
@@ -372,14 +497,68 @@ const WatsonGolfAI = () => {
             category: 'system'
           }]);
         }, 100);
-        
-        // Update greeting immediately when language changes
-        setMessages(current => current.map(msg => 
-          msg.type === 'greeting' ? { ...msg, text: TRANSLATIONS[value].greeting } : msg
-        ));
       }
       return newProfile;
     });
+  };
+
+  const calculateFitting = () => {
+    const h = parseFloat(fittingData.height);
+    const wtf = parseFloat(fittingData.wristToFloor);
+    const carry = parseFloat(fittingData.carry7);
+
+    if (!h || !wtf || !carry) return;
+
+    let lengthRec = "Standard";
+    let lieRec = "Standard";
+    let shaftRec = "Regular";
+
+    // Simplified Logic based on common charts (e.g., Ping color code approximation)
+    // WRIST TO FLOOR logic for Length
+    if (wtf > 100) lengthRec = "+1.5\"";
+    else if (wtf > 95) lengthRec = "+1.0\"";
+    else if (wtf > 90) lengthRec = "+0.5\"";
+    else if (wtf >= 85) lengthRec = "Standard"; // 85-90
+    else if (wtf >= 80) lengthRec = "-0.25\"";
+    else if (wtf >= 75) lengthRec = "-0.5\"";
+    else lengthRec = "-1.0\"";
+
+    // LIE ANGLE (Very simplified correlation between Height and WTF)
+    // If tall with short arms -> upright. If short with long arms -> flat.
+    // We use a simple matrix approximation here for the demo.
+    // Ideally needs a full chart lookup.
+    // 0 = Standard Black. Upright = Blue/Green/White/Silver. Flat = Red/Orange/Brown/Gold.
+    
+    // Simple heuristic: 
+    // Standard WTF is roughly Height / 2 + small offset (~5-10cm)
+    // If WTF is significantly larger than expected for height -> Short arms -> Upright needed
+    // If WTF is significantly smaller -> Long arms -> Flat needed
+    
+    const expectedWTF = h * 0.48; // Rough average
+    const diff = wtf - expectedWTF;
+    
+    if (diff > 5) lieRec = "2° Upright (Green)"; // High WTF
+    else if (diff > 2) lieRec = "1° Upright (Blue)";
+    else if (diff < -5) lieRec = "2° Flat (Orange)"; // Low WTF
+    else if (diff < -2) lieRec = "1° Flat (Red)";
+    else lieRec = "Standard (Black)";
+
+    // SHAFT FLEX based on 7-Iron Carry (Approximate)
+    // < 100m -> Ladies
+    // 100-120m -> Senior (A)
+    // 120-145m -> Regular
+    // 145-165m -> Stiff
+    // > 165m -> X-Stiff
+    if (carry < 100) shaftRec = "Ladies (L)";
+    else if (carry < 120) shaftRec = "Senior (A)";
+    else if (carry < 145) shaftRec = "Regular (R)";
+    else if (carry < 165) shaftRec = "Stiff (S)";
+    else shaftRec = "X-Stiff (X)";
+
+    setFittingData(prev => ({
+      ...prev,
+      results: { length: lengthRec, lie: lieRec, shaft: shaftRec }
+    }));
   };
 
   const updateDistance = (clubName, newDist) => {
@@ -395,6 +574,16 @@ const WatsonGolfAI = () => {
   const getDispersion = (distance) => {
     const rate = userProfile.handicap.dispersionRate || 0.15;
     return Math.round(distance * rate);
+  };
+
+  const loadHistory = () => {
+    if (!historyLoaded) {
+      const history = getMockHistory();
+      setMessages(prev => {
+        return [...history, ...prev];
+      });
+      setHistoryLoaded(true);
+    }
   };
 
   const scrollToBottom = () => {
@@ -550,13 +739,24 @@ const WatsonGolfAI = () => {
               </div>
             </div>
           </div>
-          <button 
-            onClick={() => setShowSettings(true)}
-            className="p-3 -mr-3 rounded-full hover:bg-slate-800 transition-colors active:scale-95"
-            aria-label="Open menu"
-          >
-            <Menu className="w-7 h-7 text-slate-300" />
-          </button>
+          <div className="flex gap-2">
+            {!historyLoaded && (
+              <button 
+                onClick={loadHistory}
+                className="p-3 rounded-full hover:bg-slate-800 transition-colors active:scale-95"
+                aria-label="Load History"
+              >
+                <History className="w-7 h-7 text-slate-300" />
+              </button>
+            )}
+            <button 
+              onClick={() => setShowSettings(true)}
+              className="p-3 -mr-3 rounded-full hover:bg-slate-800 transition-colors active:scale-95"
+              aria-label="Open menu"
+            >
+              <Menu className="w-7 h-7 text-slate-300" />
+            </button>
+          </div>
         </header>
 
         {/* SETTINGS OVERLAY */}
@@ -888,6 +1088,124 @@ const WatsonGolfAI = () => {
                         </button>
                     </div>
                 )}
+              </section>
+
+              {/* SECTION: FITTING ASSISTANT (NEW) */}
+              <section className="space-y-4">
+                 <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <Ruler className="w-4 h-4" /> {t.fitting}
+                    </h3>
+                    <button 
+                      onClick={() => setShowFittingInfo(!showFittingInfo)}
+                      className="text-slate-400 hover:text-white"
+                    >
+                      <Info className="w-4 h-4" />
+                    </button>
+                 </div>
+                 
+                 {/* FITTING INFO POPUP */}
+                 {showFittingInfo && (
+                   <div className="bg-blue-900/20 border border-blue-500/50 rounded-xl p-3 text-xs text-blue-200 mb-2">
+                     <p className="flex gap-2 items-start">
+                       <Info className="w-4 h-4 shrink-0 mt-0.5" />
+                       {t.fittingDisclaimer}
+                     </p>
+                   </div>
+                 )}
+
+                 <div className="bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-4">
+                    <p className="text-xs text-slate-400">{t.fittingDesc}</p>
+                    
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-slate-500 uppercase">{t.height}</label>
+                        <input 
+                          type="number" 
+                          placeholder="180"
+                          value={fittingData.height}
+                          onChange={(e) => setFittingData({...fittingData, height: e.target.value})}
+                          className="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-slate-500 uppercase">{t.wristToFloor}</label>
+                        <input 
+                          type="number" 
+                          placeholder="90"
+                          value={fittingData.wristToFloor}
+                          onChange={(e) => setFittingData({...fittingData, wristToFloor: e.target.value})}
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-slate-500 uppercase">{t.carry7}</label>
+                        <input 
+                          type="number" 
+                          placeholder="145"
+                          value={fittingData.carry7}
+                          onChange={(e) => setFittingData({...fittingData, carry7: e.target.value})}
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                        />
+                      </div>
+                      {/* NEW INPUTS */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-slate-500 uppercase">{t.weight}</label>
+                        <input 
+                          type="number" 
+                          placeholder="75"
+                          value={fittingData.weight}
+                          onChange={(e) => setFittingData({...fittingData, weight: e.target.value})}
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-slate-500 uppercase">{t.age}</label>
+                        <input 
+                          type="number" 
+                          placeholder="30"
+                          value={fittingData.age}
+                          onChange={(e) => setFittingData({...fittingData, age: e.target.value})}
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-slate-500 uppercase">{t.frequency}</label>
+                        <input 
+                          type="number" 
+                          placeholder="2"
+                          value={fittingData.frequency}
+                          onChange={(e) => setFittingData({...fittingData, frequency: e.target.value})}
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white text-sm focus:border-lime-500 outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <button 
+                      onClick={calculateFitting}
+                      className="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Calculator className="w-4 h-4" />
+                      {t.calculate}
+                    </button>
+
+                    {fittingData.results && (
+                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800 animate-in fade-in slide-in-from-top-2">
+                        <div className="text-center p-2 bg-slate-950 rounded-lg border border-slate-800">
+                           <div className="text-[10px] text-slate-500 uppercase mb-1">{t.length}</div>
+                           <div className="text-lime-400 font-bold">{fittingData.results.length}</div>
+                        </div>
+                        <div className="text-center p-2 bg-slate-950 rounded-lg border border-slate-800">
+                           <div className="text-[10px] text-slate-500 uppercase mb-1">{t.lie}</div>
+                           <div className="text-blue-400 font-bold text-xs">{fittingData.results.lie}</div>
+                        </div>
+                        <div className="text-center p-2 bg-slate-950 rounded-lg border border-slate-800">
+                           <div className="text-[10px] text-slate-500 uppercase mb-1">{t.shaft}</div>
+                           <div className="text-purple-400 font-bold">{fittingData.results.shaft}</div>
+                        </div>
+                      </div>
+                    )}
+                 </div>
               </section>
 
               {/* SECTION: DISTANCES (Premium) */}
