@@ -414,7 +414,8 @@ const WatsonGolfAI = () => {
     const userMsg = { 
       id: Date.now(), 
       sender: 'user', 
-      text: type === 'vision' ? '📸 [Photo]' : query, 
+      text: type === 'vision' ? '📸 [Photo]' : query,
+      image: type === 'vision' ? 'https://www.golfconnection.fr/wp-content/uploads/2025/05/04ec560c-736f-4f80-9465-76d8f3d3b051.jpg' : null,
       category: 'user' 
     };
     setMessages(prev => [...prev, userMsg]);
@@ -488,6 +489,9 @@ const WatsonGolfAI = () => {
 
   // Simulate Vision Click
   const handleVisionClick = () => {
+    // Play shutter sound
+    const shutterSound = new Audio("https://www.soundjay.com/mechanical/sounds/camera-shutter-click-01.mp3");
+    shutterSound.play().catch(e => console.log("Audio play failed", e));
     handleSendMessage(null, 'vision');
   };
 
@@ -988,6 +992,9 @@ const WatsonGolfAI = () => {
                   <div className={`text-xs font-bold uppercase tracking-wider mb-2 px-2 py-1 rounded w-fit border ${getCategoryColor(msg.category)}`}>
                     {getCategoryLabel(msg.category)}
                   </div>
+                )}
+                {msg.image && (
+                  <img src={msg.image} alt="User upload" className="rounded-lg mb-2 max-w-full h-auto" />
                 )}
                 <div className="whitespace-pre-line text-lg leading-relaxed text-white">
                   {msg.text}
