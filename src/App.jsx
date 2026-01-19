@@ -1,5 +1,5 @@
-import WatsonGolfAI from "./WatsonGolfAI";
+import BobGolfAI from "./BobGolfAI";
 
 export default function App() {
-  return <WatsonGolfAI />;
+  return <BobGolfAI />;
 }
